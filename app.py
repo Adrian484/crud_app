@@ -1,6 +1,4 @@
-from flask import Flask
-from flask import render_template 
-from flask import request 
+from flask import Flask, render_template, request, redirect 
 import psycopg2
 
 app = Flask (__name__)
@@ -27,8 +25,11 @@ def users_create():
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
     email = request.form.get('email')
-
-    sql('INSERT INTO users(first_name, last_name, email) VALUES(%s, %s, %s,) RETURNING *', [first_name, last_name, email])
+    print('meow')
+    print(first_name)
+    print(last_name)
+    print(email)
+    sql('INSERT INTO users(first_name, last_name, email) VALUES(%s, %s, %s) RETURNING *', [first_name, last_name, email])
     return redirect('/')
 
 @app.route('/signup')
