@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Edit Food Nutrition</h1>
+<form action="/foods/{{ food['id'] }}" method="POST">
+  <label for="">Name:</label>
+  <input type="text" name="name" value="{{ food['name'] }}">
+  <br><br>
+  <label for="">Calories:</label>
+  <input type="text" name="calories" value="{{ food['calories'] }}">
+  <br><br>
+  <label for="">Protein:</label>
+  <input type="text" name="protein" value="{{ food['protein'] }}">
+  <br><br>
+  <label for="">Carbohydrates:</label>
+  <input type="text" name="carbohydrates" value="{{ food['carbohydrates'] }}">
+  <br><br>
+  <label for="">Image URL:</label>
+  <input type="text" name="image_url" value="{{ food['image_url'] }}">
+  <br><br>
+  <button>Update Food</button>
+</form>
+{% endblock %}

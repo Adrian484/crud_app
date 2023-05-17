@@ -16,8 +16,7 @@ CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   first_name TEXT,
   last_name TEXT,
-  email TEXT,
-  password_digest TEXT
+  email TEXT
 );
 
 ALTER TABLE users ADD COLUMN password_digest TEXT;
@@ -27,3 +26,22 @@ CREATE TABLE likes(
   user_id INTEGER,
   food_id INTEGER
 );
+
+
+-- Lets get ALL columns for ALL users from our table:                                           -- SELECT * FROM users;
+
+-- What if we only want "name" and "location" from users table:                                 --SELECT name, location FROM users;
+
+-- What if we want ONLY the users from adelaide?                                                --SELECT * FROM users WHERE location = 'adelaide';
+
+-- What if we ONLY want users starting with the letter "r" in their name:                       --SELECT * FROM users WHERE name ILIKE 'r%';
+
+-- What if we ONLY want users containing the letter "r" in their name:                          --SELECT * FROM users WHERE name ILIKE '%r%';
+
+-- U = Update records in a table:
+-- NOTE: ALWAYS use a WHERE clause with Update
+                                                                                                --UPDATE users SET name = 'kasun maldeni' WHERE id = 1;
+
+-- D = Delete records in a table:
+-- NOTE: ALWAYS use a WHERE clause with Delete
+                                                                                                -- DELETE FROM users WHERE id = 1;

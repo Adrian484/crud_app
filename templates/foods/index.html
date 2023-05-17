@@ -1,53 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
+{% block content %}
+<h1>Food Nutrition</h1>
 
-<style> 
- body {
-    background-color: grey;
- }
-</style>
+{% if current_user %}
+<h3>Welcome to the Food Nutrition App, {{ current_user['first_name'] }}</h3>
 
-    
-    <h1>CRUD APP LOG IN</h1>
+<section class="controls">
+  <form action="/sessions/delete" method="POST">
+    <button>Log out</button>
+  </form>
 
-    <label for="">Email:</label>
-    <input type="text" name="email">
+  <a href="/foods/new">Add food item</a>
+</section>
 
-    <label for="">Password:</label>
-    <input type="text" name="password">
+<section class="foods">
+  {% for food in foods: %}
+  <section class="food">
+    <header>
+      <h2>{{ food['name'] }}</h2>
 
-    <a href="/new"><button>Sign In</button></a>
+      <section class="controls">
+        <a href="/foods/{{ food['id'] }}/edit">Edit</a>
 
-    <h2>Don't have an account? Sign up here</h2>
-<form action="/index" method="POST">
+        <form action="/foods/{{ food['id'] }}/delete" method="POST">
+          <button>Delete</button>
+        </form>
 
-  <label for="">First Name:</label>
-  <input type="text" name="first_name">
-  <br><br>
-  <label for="">Last Name:</label>
-  <input type="text" name="last_name">
-  <br><br>
-  <label for="">Email:</label>
-  <input type="text" name="email">
-  <br><br>
-  <label for="">Password:</label>
-  <input type="text" name="password">
-  <br><br>
-  
-  <button>Sign Up</button>
+        <form action="/foods/{{ food['id'] }}/likes" method="POST">
+          <button>Like</button>
+        </form>
+      </section>
+    </header>
 
-</form>
+    <img src="{{ food['image_url'] }}" alt="">
+  </section>
+  {% endfor %}
+</section>
+{% else %}
+<a href="/users/new">Sign up</a>
+<a href="/sessions/new">Log in</a>
+{% endif %}
 
-
-
-
-</body>
-</html>
+{% endblock %}

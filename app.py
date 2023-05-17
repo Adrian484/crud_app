@@ -1,31 +1,21 @@
+import os
 from flask import Flask, redirect
 from routes.foods_routes import foods_routes
 from routes.users_routes import users_routes
 from routes.sessions_routes import sessions_routes
 
+SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "pretend key for testing only")
+
 app = Flask(__name__)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 app.register_blueprint(foods_routes, url_prefix='/foods')
 app.register_blueprint(users_routes, url_prefix='/users')
 app.register_blueprint(sessions_routes, url_prefix='/sessions')
 
-
 @app.route('/')
 def index():
-    return redirect('/foods')
-
-@app.route('/foods/new')
-@app.route('/foods', methods=['POST'])
-@app.route('/foods/<id>/edit')
-@app.route('/foods/<id>', methods=["POST"])
-@app.route('/foods/<id>/delete', methods=["POST"])
-
-@app.route('/users/new')
-@app.route('/users', methods=["POST"])
-
-
-
-
+  return redirect('/foods')
 
 # mkdir app_app
 # cd app_app
