@@ -3,6 +3,7 @@ from flask import Flask, redirect
 from routes.foods_routes import foods_routes
 from routes.users_routes import users_routes
 from routes.sessions_routes import sessions_routes
+import random
 
 SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "pretend key for testing only")
 
@@ -16,6 +17,10 @@ app.register_blueprint(sessions_routes, url_prefix='/sessions')
 @app.route('/')
 def index():
   return redirect('/foods')
+
+
+
+
 
 # mkdir app_app
 # cd app_app
