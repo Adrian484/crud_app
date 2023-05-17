@@ -12,7 +12,11 @@ def new():
 def create():
   name = request.form.get('name')
   image_url = request.form.get('image_url')
-  create_food(name, image_url)
+  calories = request.form.get('calories')
+  protein = request.form.get('protein')
+  carbohydrates = request.form.get('carbohydrates')
+
+  create_food(name, calories, protein, carbohydrates, image_url)
   return redirect('/')
 
 def edit(id):
@@ -22,7 +26,11 @@ def edit(id):
 def update(id):
   name = request.form.get('name')
   image_url = request.form.get('image_url')
-  update_food(id, name, image_url)
+  calories = request.form.get('calories')
+  protein = request.form.get('protein')
+  carbohydrates = request.form.get('carbohydrates')
+
+  update_food(id, name, calories, protein, carbohydrates, image_url)
   return redirect('/')
 
 def delete(id):

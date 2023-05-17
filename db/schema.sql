@@ -1,11 +1,17 @@
 CREATE DATABASE food_nutrition_db;
-\c food_nutrition_db
+\c food_nutrition_db;
+
 
 CREATE TABLE foods(
   id SERIAL PRIMARY KEY,
   name TEXT,
   image_url TEXT
 );
+
+-- SELECT * FROM foods; 
+-- q to quit table
+-- DROP TABLE foods;
+
 
 INSERT INTO foods(name, image_url)
 VALUES
@@ -26,6 +32,18 @@ CREATE TABLE likes(
   user_id INTEGER,
   food_id INTEGER
 );
+
+-- This table will store the information I require
+-- CREATE TABLE foods(
+--   id SERIAL PRIMARY KEY,
+--   name TEXT,
+--   calories TEXT, 
+--   protein TEXT,
+--   carbohydrates TEXT,
+--   image_url TEXT
+-- );
+
+
 
 
 -- Lets get ALL columns for ALL users from our table:                                           -- SELECT * FROM users;
