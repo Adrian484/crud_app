@@ -10,8 +10,8 @@ def get_food(id):
 
 def create_food(name, calories, protein, carbohydrates, image_url):
   sql('INSERT INTO foods(name, calories, protein, carbohydrates, image_url) VALUES(%s, %s, %s, %s, %s) RETURNING *', [name, calories, protein, carbohydrates, image_url])
-  count+= 1
-  
+count += 1
+
 def update_food(id, name, calories, protein, carbohydrates, image_url):
   sql('UPDATE foods SET name=%s, calories=%s, protein=%s, carbohydrates=%s, image_url=%s WHERE id=%s RETURNING *', [name, calories, protein, carbohydrates, image_url, id])
 
