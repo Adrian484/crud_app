@@ -20,6 +20,8 @@ def get_random_color():
     blue = random.randint(0, 255)
     return f"rgb({red}, {green}, {blue})"
 
+
+
 @app.route('/')
 def index():
   random_color = get_random_color()

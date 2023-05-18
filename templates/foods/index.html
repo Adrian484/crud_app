@@ -21,6 +21,7 @@
   {% for food in foods: %}
   <section class="food">
     <header>
+      <p>Total Items: {{ count }}</p>
       <h2>{{ food['name']}}</h2>
       <h2>{{ food ['calories']}}</h2>
       <h2>{{ food ['protein']}}</h2>
