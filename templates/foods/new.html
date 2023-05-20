@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+
+
 <h1>Add Food</h1>
 <form action="/foods" method="POST">
   <label for="">Name:</label>
@@ -19,5 +29,17 @@
   <input type="text" name="image_url">
 
   <button>Add Food</button>
+
+
+  <script>
+    window.onload = function() {
+      var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+      document.body.style.backgroundColor = "#" + randomColor;
+  };
+    </script>
+
+
+
 </form>
+
 {% endblock %}

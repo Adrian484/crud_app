@@ -44,6 +44,9 @@ CREATE TABLE likes(
 -- );
 
 
+-- SELECT calories FROM foods; -- This will display all the calories in foods. But I want to display all the foods with 200 calories or less.
+--I want to do WHERE is less than 200 or some shit
+
 
 
 -- Lets get ALL columns for ALL users from our table:                                           -- SELECT * FROM users;

@@ -2,6 +2,16 @@
 
 {% block content %}
 
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+
+
 <h1>Edit Food Nutrition</h1>
 <form action="/foods/{{ food['id'] }}" method="POST">
   <label for="">Name:</label>
@@ -20,5 +30,17 @@
   <input type="text" name="image_url" value="{{ food['image_url'] }}">
   <br><br>
   <button>Update Food</button>
+
+
+<script>
+
+window.onload = function() {
+    var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    document.body.style.backgroundColor = "#" + randomColor;
+};
+
+</script>
+
+  
 </form>
 {% endblock %}

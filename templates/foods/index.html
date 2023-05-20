@@ -11,7 +11,24 @@
     <button>Log out</button>
   </form>
 
-   
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+</style>
+  
+<script>
+  window.onload = function() {
+    var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    document.body.style.backgroundColor = "#" + randomColor;
+};
+  </script>
+
+
+
   <a href="/foods/new">Add food item</a>
 
   {{ random_color }}
@@ -50,8 +67,8 @@
 {% else %}
 <a href="/users/new">Sign up</a>
 <a href="/sessions/new">Log in</a>
+
 {% endif %}
 
 {% endblock %}
-
 

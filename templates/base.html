@@ -9,6 +9,26 @@
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+
+
+
+<script>
+window.onload = function() {
+    var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    document.body.style.backgroundColor = "#" + randomColor;
+};
+</script>
+
+
 <body>
   {% block content %}
   {% endblock %}
