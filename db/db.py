@@ -3,7 +3,7 @@ import psycopg2
 import psycopg2.extras
 
 
-DB_URL = "dbname=food_nutrition_db"
+DB_URL = os.environ.get("DATABASE_URL", "dbname=food_nutrition_db")
 
 def sql(query, parameters=[]):
   connection = psycopg2.connect(DB_URL) # open connection
