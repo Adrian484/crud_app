@@ -43,8 +43,8 @@ CREATE TABLE foods(
   image_url TEXT
 );
 
-
-SELECT * FROM foods WHERE calories <= 200;
+ALTER TABLE foods ALTER COLUMN calories TYPE NUMERIC USING calories::numeric; -- I had to change the calories from TEXT to Numeric so I could properly read foods that 200 calories or less
+SELECT * FROM foods WHERE calories <= 200; -- This will correctly show the desired foods at 200 calories or less
 
 
 

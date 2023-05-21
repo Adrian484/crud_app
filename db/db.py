@@ -1,5 +1,7 @@
+import os
 import psycopg2
 import psycopg2.extras
+
 
 DB_URL = "dbname=food_nutrition_db"
 

@@ -1,3 +1,6 @@
 flask
 psycopg2-binary
 bcrypt
+python-dotenv
+requests
+gunicorn

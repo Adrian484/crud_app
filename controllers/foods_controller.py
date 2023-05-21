@@ -11,18 +11,11 @@ def index():
   foods = all_foods()
   return render_template('foods/index.html', random_color=random_color, foods=foods, current_user=current_user())
 
-
 # def get_random_color():
 #     red = random.randint(0, 255)
 #     green = random.randint(0, 255)
 #     blue = random.randint(0, 255)
 #     return f"rgb({red}, {green}, {blue})"
-
-
-
-  
-
-  
 
 def new():
   return render_template('foods/new.html')

@@ -27,16 +27,20 @@ body {
 };
   </script>
 
-
-
   <a href="/foods/new">Add food item</a>
-
-  {{ random_color }}
+  
+  
 </section>
+
+<h3>Search by calories</h3>
+  <form method="POST" action="/">
+    <label for="calorie_amount">Enter calorie amount:</label>
+    <input type="number" id="calorie_amount" name="calorie_amount" required>
+    <button type="submit">Search</button>
 
 
 <section class="foods">
-  <p></p>
+
   {% for food in foods: %}
   <section class="food">
     
