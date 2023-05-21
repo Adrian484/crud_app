@@ -34,18 +34,17 @@ CREATE TABLE likes(
 );
 
 -- This table will store the information I require
--- CREATE TABLE foods(
---   id SERIAL PRIMARY KEY,
---   name TEXT,
---   calories TEXT, 
---   protein TEXT,
---   carbohydrates TEXT,
---   image_url TEXT
--- );
+CREATE TABLE foods(
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  calories TEXT, 
+  protein TEXT,
+  carbohydrates TEXT,
+  image_url TEXT
+);
 
 
--- SELECT calories FROM foods; -- This will display all the calories in foods. But I want to display all the foods with 200 calories or less.
---I want to do WHERE is less than 200 or some shit
+SELECT * FROM foods WHERE calories <= 200;
 
 
 
