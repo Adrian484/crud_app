@@ -1,21 +1,24 @@
 from flask import render_template, request, redirect, session
-from models.food import all_foods, get_food, create_food, update_food, delete_food, like_food
+from models.food import all_foods, get_food, create_food, update_food, delete_food, like_food, calorie_amount
 from services.session_info import current_user
 import random
 
 def index():
-  red = random.randint(0, 255)
-  green = random.randint(0, 255)
-  blue = random.randint(0, 255)
-  random_color = {red}, {green}, {blue}
-  foods = all_foods()
-  return render_template('foods/index.html', random_color=random_color, foods=foods, current_user=current_user())
+    red = random.randint(0, 255)
+    green = random.randint(0, 255)
+    blue = random.randint(0, 255)
+    random_color = (red, green, blue)
+    print(request.method)  # Debug print statement
+    print(request.form) 
 
-# def get_random_color():
-#     red = random.randint(0, 255)
-#     green = random.randint(0, 255)
-#     blue = random.randint(0, 255)
-#     return f"rgb({red}, {green}, {blue})"
+    max_calories = request.form.get('calorie_amount')  # Get the maximum calorie amount from the form submission
+
+    if max_calories:  # If a maximum calorie amount is provided, call the calorie_amount function
+        foods = calorie_amount(max_calories)
+    else:  # Otherwise, retrieve all foods
+        foods = all_foods()
+
+    return render_template('foods/index.html', random_color=random_color, foods=foods, current_user=current_user())
 
 def new():
   return render_template('foods/new.html')

@@ -26,7 +26,7 @@ def index():
 # cd app_app
 # python -m venv venv
 # . venv/bin/activate
-# flask --app planets run
+# flask --app app run
 # pip install Flask
 # pip install requests
 

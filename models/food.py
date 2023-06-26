@@ -9,10 +9,7 @@ def get_food(id):
   foods = sql("SELECT * FROM foods WHERE id = %s", [id])
   return foods[0]
 
-def calorie_amount():
-    # Get the calorie amount from the form submission
-    calorie_amount = int(request.form['calorie_amount'])
-
+def calorie_amount(max_calories):
     # Make a connection to the database
     conn = psycopg2.connect(database="food_nutrition_db")
 
@@ -23,7 +20,7 @@ def calorie_amount():
     query = "SELECT * FROM foods WHERE calories <= %s;"
 
     # Execute the query with the parameter
-    cur.execute(query, (calorie_amount,))
+    cur.execute(query, (max_calories,))
 
     # Fetch the results
     foods = cur.fetchall()
@@ -35,15 +32,8 @@ def calorie_amount():
     # Return the foods
     return foods
   
-
-
-
-
-
-
 def create_food(name, calories, protein, carbohydrates, image_url):
   sql('INSERT INTO foods(name, calories, protein, carbohydrates, image_url) VALUES(%s, %s, %s, %s, %s) RETURNING *', [name, calories, protein, carbohydrates, image_url])
-
 
 def update_food(id, name, calories, protein, carbohydrates, image_url):
   sql('UPDATE foods SET name=%s, calories=%s, protein=%s, carbohydrates=%s, image_url=%s WHERE id=%s RETURNING *', [name, calories, protein, carbohydrates, image_url, id])
