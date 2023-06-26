@@ -10,27 +10,26 @@ def get_food(id):
   return foods[0]
 
 def calorie_amount(max_calories):
-    # Make a connection to the database
     conn = psycopg2.connect(database="food_nutrition_db")
-
-    # Create a cursor object
     cur = conn.cursor()
-
-    # Prepare the SQL query with a parameter
     query = "SELECT * FROM foods WHERE calories <= %s;"
-
-    # Execute the query with the parameter
     cur.execute(query, (max_calories,))
-
-    # Fetch the results
     foods = cur.fetchall()
-
-    # Close the cursor and connection
     cur.close()
     conn.close()
-
-    # Return the foods
-    return foods
+    # Convert the result to a list of dictionaries
+    food_list = []
+    for food in foods:
+        food_dict = {
+            'id': food[0],
+            'name': food[1],
+            'calories': food[2],
+            'protein': food[3],
+            'carbohydrates': food[4],
+            'image_url': food[5]
+        }
+        food_list.append(food_dict)
+    return food_list
   
 def create_food(name, calories, protein, carbohydrates, image_url):
   sql('INSERT INTO foods(name, calories, protein, carbohydrates, image_url) VALUES(%s, %s, %s, %s, %s) RETURNING *', [name, calories, protein, carbohydrates, image_url])
