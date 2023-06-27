@@ -42,7 +42,9 @@ def index():
         foods = all_foods()
         return render_template('foods/index.html', foods=foods, current_user=current_user())
 
-
+@app.route('/foods/revert', methods=['POST'])
+def revert_order():
+    return redirect(url_for('index'))
 
 
 # mkdir app_app

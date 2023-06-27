@@ -18,6 +18,10 @@ def sort_by(protein):
     foods = sql(query)
     return foods
 
+def sort_by_order_added():
+    foods = sql('SELECT * FROM foods ORDER BY id ASC')
+    return foods
+
 # def calorie_amount(max_calories):
 #     conn = psycopg2.connect(database="food_nutrition_db")
 #     cur = conn.cursor()

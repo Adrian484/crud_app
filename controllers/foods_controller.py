@@ -4,7 +4,6 @@ from services.session_info import current_user
 import random
 
 def index():
-    print('hello')
     red = random.randint(0, 255)
     green = random.randint(0, 255)
     blue = random.randint(0, 255)
@@ -17,10 +16,10 @@ def index():
 
     if max_calories:  # If a maximum calorie amount is provided, call the calorie_amount function
         foods = calorie_amount(max_calories)
-        print("hello!")
     elif sort_attribute == 'protein':  # If the sort attribute is 'protein', call the sort_by function
         foods = sort_by('protein')
-        print("hello")
+    elif sort_attribute == 'order_added':  # If the sort attribute is 'order_added', call the sort_by_order_added function
+        foods = sort_by_order_added()
     else:  # Otherwise, retrieve all foods
         foods = all_foods()
 
