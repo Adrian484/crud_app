@@ -59,3 +59,9 @@ SELECT * FROM foods WHERE calories <= 200; -- This will correctly show the desir
 -- D = Delete records in a table:
 -- NOTE: ALWAYS use a WHERE clause with Delete
                                                                                                 -- DELETE FROM users WHERE id = 1;
+-- If I wanted to quickly re-add a food for testing purposes
+-- Canned Tuna
+-- 85
+-- 16g
+-- 0g
+-- https://assets.epicurious.com/photos/5ae7955643d4bc0a5b3f3e34/1:1/w_3643,h_3643,c_limit/Tuna-Taste-Test-25022018.jpg

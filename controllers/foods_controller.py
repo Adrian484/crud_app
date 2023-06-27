@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, session
+from flask import render_template, request, redirect, session, url_for
 from models.food import all_foods, get_food, create_food, update_food, delete_food, like_food, calorie_amount
 from services.session_info import current_user
 import random
@@ -24,14 +24,21 @@ def new():
   return render_template('foods/new.html')
 
 def create():
-  name = request.form.get('name')
-  image_url = request.form.get('image_url')
-  calories = request.form.get('calories')
-  protein = request.form.get('protein')
-  carbohydrates = request.form.get('carbohydrates')
-
-  create_food(name, calories, protein, carbohydrates, image_url)
-  return redirect('/')
+    print('meow')
+    name = request.form.get('name')
+    image_url = request.form.get('image_url')
+    calories = request.form.get('calories')
+    protein = request.form.get('protein')
+    carbohydrates = request.form.get('carbohydrates')
+    print(name)
+    print('Line 33')
+    create_food(name, calories, protein, carbohydrates, image_url)
+    
+    # Fetch the updated list of foods
+    foods = all_foods()
+    
+    # Redirect to the index page with the updated list of foods
+    return redirect(url_for('foods_routes.index', foods=foods))
 
 def edit(id):
   food = get_food(id)

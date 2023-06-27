@@ -3,7 +3,7 @@ from controllers.foods_controller import index, new, create, edit, update, delet
 
 foods_routes = Blueprint('foods_routes', __name__)
 
-foods_routes.route('', methods=['GET', 'POST'])(index) 
+foods_routes.route('')(index) 
 
 foods_routes.route('/new')(new)
 foods_routes.route('', methods=['POST'])(create)

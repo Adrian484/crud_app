@@ -10,3 +10,11 @@ There is also an option to like which I did not get working so it's just for sho
 on user input. The input and button is there, however it does not work. Aside from the content and input options, the only other main feature is the page will
 randomly generate a background colour every time it is loaded and will change with every refresh as well.
 
+
+Bugs:
+
+On load of server, this error gets returned, it has not affected anything that I can see, and does not show errors on page or in inspect console: 
+
+127.0.0.1 - - [27/Jun/2023 10:32:27] "GET / HTTP/1.1" 302 -
+GET
+ImmutableMultiDict([])
