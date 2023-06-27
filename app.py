@@ -5,7 +5,7 @@ from routes.users_routes import users_routes
 from routes.sessions_routes import sessions_routes
 from dotenv import load_dotenv
 from controllers.foods_controller import index as foods_index
-from models.food import calorie_amount, all_foods
+from models.food import calorie_amount, all_foods, sort_by
 from services.session_info import current_user
 
 load_dotenv()
@@ -27,10 +27,15 @@ def redirect_to_foods():
 def index():
     if request.method == 'POST':
         max_calories = request.form.get('calorie_amount')
+        sort_attribute = request.form.get('sort_by')  # Get the sort attribute from the form submission
+
         if max_calories:
             foods = calorie_amount(max_calories)
+        elif sort_attribute == 'protein':
+            foods = sort_by('protein')
         else:
             foods = all_foods()
+
         return render_template('foods/index.html', foods=foods, current_user=current_user())
     else:
         # Handle GET request, retrieve all foods

@@ -38,6 +38,11 @@ body {
   <input type="number" id="calorie_amount" name="calorie_amount" required>
   <button type="submit">Search</button>
 </form>
+<form method="POST" action="/">
+  <label for="sort_by">Sort by protein amount (most to least):</label>
+  <input type="hidden" id="sort_by" name="sort_by" value="protein">
+  <button type="submit">Sort</button>
+</form>
 
 
 <section class="foods">

@@ -1,20 +1,26 @@
 from flask import render_template, request, redirect, session, url_for
-from models.food import all_foods, get_food, create_food, update_food, delete_food, like_food, calorie_amount
+from models.food import all_foods, get_food, create_food, update_food, delete_food, like_food, calorie_amount, sort_by
 from services.session_info import current_user
 import random
 
 def index():
+    print('hello')
     red = random.randint(0, 255)
     green = random.randint(0, 255)
     blue = random.randint(0, 255)
     random_color = (red, green, blue)
     print(request.method)  # Debug print statement
-    print(request.form) 
+    print(request.form)
 
     max_calories = request.form.get('calorie_amount')  # Get the maximum calorie amount from the form submission
+    sort_attribute = request.form.get('sort_by')  # Get the sort attribute from the form submission
 
     if max_calories:  # If a maximum calorie amount is provided, call the calorie_amount function
         foods = calorie_amount(max_calories)
+        print("hello!")
+    elif sort_attribute == 'protein':  # If the sort attribute is 'protein', call the sort_by function
+        foods = sort_by('protein')
+        print("hello")
     else:  # Otherwise, retrieve all foods
         foods = all_foods()
 

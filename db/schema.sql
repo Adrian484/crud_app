@@ -31,14 +31,19 @@ CREATE TABLE likes(
 CREATE TABLE foods(
   id SERIAL PRIMARY KEY,
   name TEXT,
-  calories TEXT, 
-  protein TEXT,
-  carbohydrates TEXT,
+  calories FLOAT, 
+  protein FLOAT,
+  carbohydrates FLOAT,
   image_url TEXT
 );
 
 ALTER TABLE foods ALTER COLUMN calories TYPE NUMERIC USING calories::numeric; -- I had to change the calories from TEXT to Numeric so I could properly read foods that 200 calories or less
 SELECT * FROM foods WHERE calories <= 200; -- This will correctly show the desired foods at 200 calories or less
+
+
+SELECT * FROM foods ORDER BY protein ASC; -- This will sort in an ascending order for foods by protein (least to most)
+
+SELECT * FROM foods ORDER BY protein DESC; -- This will sort in an ascending order for foods by protein (most to least)
 
 
 

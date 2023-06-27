@@ -13,6 +13,11 @@ def calorie_amount(calories):
   foods = sql("SELECT * FROM foods WHERE calories <= %s;", [calories])
   return foods
 
+def sort_by(protein):
+    query = "SELECT * FROM foods ORDER BY protein DESC;"
+    foods = sql(query)
+    return foods
+
 # def calorie_amount(max_calories):
 #     conn = psycopg2.connect(database="food_nutrition_db")
 #     cur = conn.cursor()
