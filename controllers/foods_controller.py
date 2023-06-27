@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, session, url_for
-from models.food import all_foods, get_food, create_food, update_food, delete_food, like_food, calorie_amount, sort_by
+from models.food import all_foods, get_food, create_food, update_food, delete_food, like_food, calorie_amount, sort_by, sort_by_order_added, sort_by_new
 from services.session_info import current_user
 import random
 
@@ -8,7 +8,7 @@ def index():
     green = random.randint(0, 255)
     blue = random.randint(0, 255)
     random_color = (red, green, blue)
-    print(request.method)  # Debug print statement
+    print(request.method) 
     print(request.form)
 
     max_calories = request.form.get('calorie_amount')  # Get the maximum calorie amount from the form submission
@@ -20,6 +20,9 @@ def index():
         foods = sort_by('protein')
     elif sort_attribute == 'order_added':  # If the sort attribute is 'order_added', call the sort_by_order_added function
         foods = sort_by_order_added()
+    elif sort_attribute == 'new':
+        print('woof')  # If the sort attribute is 'new', call the sort_by_new function
+        foods = sort_by_new()
     else:  # Otherwise, retrieve all foods
         foods = all_foods()
 
@@ -29,7 +32,6 @@ def new():
   return render_template('foods/new.html')
 
 def create():
-    print('meow')
     name = request.form.get('name')
     image_url = request.form.get('image_url')
     calories = request.form.get('calories')

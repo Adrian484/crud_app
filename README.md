@@ -24,6 +24,8 @@ Bugs:
 GET
 ImmutableMultiDict([])
 
+> Currently the sort by new does not work. However, it does not create errors and still refreshes the page.
+
 Features to Add:
 
 > Stylise the layout to be more aesthetic and professional
@@ -31,7 +33,10 @@ Features to Add:
 > Have a better display of the foods and their contents, currently there is no mention of calories, protein or carbohydrates when they display, only their numbers.
 
 Notes:
-I have changed my database to use float numbers instead of text, the order of the foods in the database when using the sort by feature were not properly ordered.
 
-After changing the database for Calories, Protein and Carbohydrates, I have changed the form to make it take numbers, not text as if letters are put in, it creates errors. This applies to edit and the create functions.
+> I have changed my database to use float numbers instead of text, the order of the foods in the database when using the sort by feature were not properly ordered.
+
+> After changing the database for Calories, Protein and Carbohydrates, I have changed the form to make it take numbers, not text as if letters are put in, it creates errors. This applies to edit and the create functions.
+
+
 

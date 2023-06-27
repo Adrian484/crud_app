@@ -22,7 +22,24 @@ def sort_by_order_added():
     foods = sql('SELECT * FROM foods ORDER BY id ASC')
     return foods
 
-# def calorie_amount(max_calories):
+def sort_by_new():
+    foods = sql('SELECT * FROM foods ORDER BY id DESC')
+    return foods
+
+def create_food(name, calories, protein, carbohydrates, image_url):
+  sql('INSERT INTO foods(name, calories, protein, carbohydrates, image_url) VALUES(%s, %s, %s, %s, %s) RETURNING *', [name, calories, protein, carbohydrates, image_url])
+
+def update_food(id, name, calories, protein, carbohydrates, image_url):
+  sql('UPDATE foods SET name=%s, calories=%s, protein=%s, carbohydrates=%s, image_url=%s WHERE id=%s RETURNING *', [name, calories, protein, carbohydrates, image_url, id])
+
+def delete_food(id):
+  sql('DELETE FROM foods WHERE id=%s RETURNING *', [id])
+
+def like_food(food_id, user_id):
+  sql("INSERT INTO likes(user_id, food_id) VALUES(%s, %s) RETURNING *", [user_id, food_id])
+
+
+  # def calorie_amount(max_calories):
 #     conn = psycopg2.connect(database="food_nutrition_db")
 #     cur = conn.cursor()
 #     query = "SELECT * FROM foods WHERE calories <= %s;"
@@ -43,15 +60,3 @@ def sort_by_order_added():
 #         }
 #         food_list.append(food_dict)
 #     return food_list
-  
-def create_food(name, calories, protein, carbohydrates, image_url):
-  sql('INSERT INTO foods(name, calories, protein, carbohydrates, image_url) VALUES(%s, %s, %s, %s, %s) RETURNING *', [name, calories, protein, carbohydrates, image_url])
-
-def update_food(id, name, calories, protein, carbohydrates, image_url):
-  sql('UPDATE foods SET name=%s, calories=%s, protein=%s, carbohydrates=%s, image_url=%s WHERE id=%s RETURNING *', [name, calories, protein, carbohydrates, image_url, id])
-
-def delete_food(id):
-  sql('DELETE FROM foods WHERE id=%s RETURNING *', [id])
-
-def like_food(food_id, user_id):
-  sql("INSERT INTO likes(user_id, food_id) VALUES(%s, %s) RETURNING *", [user_id, food_id])
