@@ -45,7 +45,9 @@ SELECT * FROM foods ORDER BY protein ASC; -- This will sort in an ascending orde
 
 SELECT * FROM foods ORDER BY protein DESC; -- This will sort in an ascending order for foods by protein (most to least)
 
-
+-- If I want to change my protein from 15 to 2 for whatever is at 5 for id
+UPDATE foods SET protein = 2 
+WHERE id = 5;
 
 -- Lets get ALL columns for ALL users from our table:                                           -- SELECT * FROM users;
 

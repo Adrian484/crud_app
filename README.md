@@ -38,5 +38,8 @@ Notes:
 
 > After changing the database for Calories, Protein and Carbohydrates, I have changed the form to make it take numbers, not text as if letters are put in, it creates errors. This applies to edit and the create functions.
 
+> Although my local side works properly, my deployed version of this app on Render has all of the recent commits but the database still uses the "text" instead of the "floats" that I had changed, so the foods table will need to be deleted and then re-built or change the properties of the column if possible so that I am using float for Calories, Protein and Carbohydrates
+
+I believe it only remains on Render for about 90 days, so by the near end of September 2023, this issue won't matter.
 
 
